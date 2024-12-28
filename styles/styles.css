@@ -1,0 +1,141 @@
+/* General Reset */
+body, h1, h2, h4, p, a {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.content {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.hero-image {
+  max-width: 50%;
+  height: auto;
+  margin: 1rem 0;
+}
+
+.description p {
+  margin: 0.5rem auto;
+  max-width: 700px;
+  text-align: left;
+}
+
+.links-section h4 {
+  margin: 1rem auto;
+  font-size: 1.25rem;
+  color: #fff;
+  background-color: #00509e;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  /*margin: 1rem 0;*/
+}
+
+.links a {
+  color: #00509e;
+  background-color: #e7f3ff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.links a:hover {
+  background-color: #00509e;
+  color: #fff;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  background: #333;
+  color: #fff;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* Remebering the Tea Party */
+/* General Reset */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Centering Content */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Title Styling */
+#page-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Paragraph Styling */
+.paragraph {
+  text-align: justify;
+  line-height: 1.6;
+  color: black;
+  margin-bottom: 15px;
+}
+
+/* Link Styling */
+#home-link {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #007BFF;
+}
+
+#home-link:hover {
+  text-decoration: underline;
+}
+
+.quote {
+  margin-left: 20px;
+  padding-left: 15px;
+  /*border-left: 3px solid #ccc;*/
+  /*font-style: italic;*/
+  text-align: left;
+}

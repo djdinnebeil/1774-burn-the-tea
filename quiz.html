@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Greenwich Tea Burning</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h3 {
+      text-align: center;
+    }
+    .quiz, .results {
+      margin-bottom: 40px;
+    }
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: blue;
+      color: white;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+    .button:hover {
+      background-color: darkblue;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+    .answer-tag {
+      font-style: italic;
+      margin-top: 5px;
+      display: block;
+    }
+    .reason-tag {
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <h3>The Greenwich Tea Burning Quiz</h3>
+
+  <div class="quiz">
+    <form id="quiz-form">
+      <p id="q1-container">1. The Greenwich Tea Party occurred on<br>
+        <label><input type="radio" name="q1" value="November 22, 1774"> November 22, 1774</label><br>
+        <label><input type="radio" name="q1" value="November 23, 1774"> November 23, 1774</label><br>
+        <label><input type="radio" name="q1" value="December 22, 1774"> December 22, 1774</label><br>
+        <label><input type="radio" name="q1" value="December 23, 1774"> December 23, 1774</label>
+        <p class="answer-tag" id="answer-q1"></p>
+        <p class="reason-tag" id="reason-q1"></p>
+      </p>
+      <p id="q2-container">2. How was the tea destroyed?<br>
+        <label><input type="radio" name="q2" value="By dumping it into the water"> By dumping it into the water</label><br>
+        <label><input type="radio" name="q2" value="By burning it"> By burning it</label><br>
+        <label><input type="radio" name="q2" value="By both dumping it into the water and burning it"> By both dumping it into the water and burning it</label><br>
+        <label><input type="radio" name="q2" value="The tea was not destroyed"> The tea was not destroyed</label>
+        <p class="answer-tag" id="answer-q2"></p>
+        <p class="reason-tag" id="reason-q2"></p>
+      </p>
+      <p id="q3-container">3. What disguises did the participants use:<br>
+        <label><input type="radio" name="q3" value="Mohawk Indians"> Mohawk Indians</label><br>
+        <label><input type="radio" name="q3" value="Narragansett Indians"> Narragansett Indians</label><br>
+        <label><input type="radio" name="q3" value="Both Mohawk Indians and Narragansett Indians"> Both Mohawk Indians and Narragansett Indians</label><br>
+        <label><input type="radio" name="q3" value="Cannot know for certain"> Cannot know for certain</label>
+        <p class="answer-tag" id="answer-q3"></p>
+        <p class="reason-tag" id="reason-q3"></p>
+      </p>
+      <p id="q4-container">4. Where was the tea stored before it was destroyed:<br>
+        <label><input type="radio" name="q4" value="Dan Bowen's"> At Dan Bowen's</label><br>
+        <label><input type="radio" name="q4" value="David Sutton's"> At David Sutton's</label><br>
+        <label><input type="radio" name="q4" value="Both Dan Bowen's and David Sutton's"> At both Dan Bowen's and David Sutton's</label><br>
+        <label><input type="radio" name="q4" value="There are conflicting accounts"> There are conflicting accounts</label>
+        <p class="answer-tag" id="answer-q4"></p>
+        <p class="reason-tag" id="reason-q4"></p>
+      </p>
+      <p id="q5-container">5. What century was the Greenwich Tea Burning Monument erected:<br>
+        <label><input type="radio" name="q5" value="18th"> 18th</label><br>
+        <label><input type="radio" name="q5" value="19th"> 19th</label><br>
+        <label><input type="radio" name="q5" value="20th"> 20th</label><br>
+        <label><input type="radio" name="q5" value="21st"> 21st</label>
+        <p class="answer-tag" id="answer-q5"></p>
+        <p class="reason-tag" id="reason-q5"></p>
+      </p>
+      <button type="button" class="button" onclick="submitQuiz()">Submit</button>
+    </form>
+    <a href="index.html">Home</a>
+  </div>
+
+  <script>
+    const correctAnswers = ["December 22, 1774", "By burning it", "Cannot know for certain", "There are conflicting accounts", "20th"];
+    const reasons = [
+      'The Greenwich Tea Party occurred on December 22, 1774',
+      'The tea was \'consumed with fire.\'',
+      'Fithian\'s journal only says \'persons in disguise\', but does not say how.',
+      'There are conflicting accounts as to where the tea was stored.\nFithian\'s journal states Dan Bowen\'s whereas a 1930 letter claims David Sutton\'s.',
+      'The Greenwich Tea Burning Monument was unveiled on September 30, 1908.'
+    ]
+
+    function submitQuiz() {
+      const form = document.getElementById('quiz-form');
+      const formData = new FormData(form);
+
+      correctAnswers.forEach((answer, index) => {
+        const userAnswer = formData.get(`q${index + 1}`);
+        const answerTag = document.getElementById(`answer-q${index + 1}`);
+        const reasonTag = document.getElementById(`reason-q${index + 1}`);
+        const container = document.getElementById(`q${index + 1}-container`);
+
+        if (userAnswer === answer) {
+          answerTag.className = "correct";
+          container.className = 'correct';
+          answerTag.textContent = `Correct.\n`;
+        } else {
+          answerTag.className = "incorrect";
+          container.className = 'incorrect';
+
+          answerTag.textContent = `Incorrect. Correct answer: ${answer}`;
+        }
+        reasonTag.innerHTML = reasons[index];
+
+      });
+    }
+  </script>
+</body>
+</html>
